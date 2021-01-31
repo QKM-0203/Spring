@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Bean//加密模式
+    @Bean//加密模式，记住这个验证时是加密验证的，那么存的时候也要加密后再存
     public PasswordEncoder encode(){
         return new BCryptPasswordEncoder();
     }
@@ -37,16 +37,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected  void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                //当有ROLE_USER身份时就能访问该页面
                 .antMatchers("/home")
                 .access("hasRole('ROLE_USER')")
                 .antMatchers("/*")
-                .access("permitAll")
+                .access("permitAll")//都可以
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/Login/Test")
-                .defaultSuccessUrl("/home")
+                .loginPage("/login")//当访问页需要登录权限时，就定位到该路径，一般都是定位到登录页面，
+                //可以使用Spring security 该框架原本的登录页面，也可以自行设定，不写就是默认原本的
                 .and()
-                .logout();
+                .logout();//注销功能
     }
 }
