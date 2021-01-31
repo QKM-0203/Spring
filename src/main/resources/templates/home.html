@@ -6,8 +6,10 @@
 <body>
   <h1>welcome to...</h1>
   <!--图片这样的静态资源放在static文件夹下-->
-  <img th:src="@{/y.jpg}"/>
-  <!--
+  <img  th:src="@{/q.jpg}" width="1000px" height="1000px"/>
+  <form method="POST" th:action="@{/logout}" id="loginForm">
+      <input type="submit" value="Logout" />
+  </form> <!--
   <p th:text="${tester.name}">你好</p>
   -->
 

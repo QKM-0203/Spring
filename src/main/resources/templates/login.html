@@ -5,10 +5,10 @@
 </head>
 <body>
 <h1>Login</h1>
-<img th:src="@{/y.jpg}"/>
-<form method="POST" th:action="@{/login}" id="loginForm">
+<img th:src="@{/y.jpg}" width="500px" height="500px"/>
+<form method="POST" th:action="@{/Login/Test}" id="loginForm">
     <label for="username">Username: </label>
-    <input type="text" name="name" id="username" /><br/>
+    <input type="text" name="username" id="username" /><br/>
     <label for= "password">Password: </label>
     <input type="password" name="password" id="password" /><br/>
     <input type="submit" value="Login" />

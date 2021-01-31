@@ -1,6 +1,7 @@
 package sia.tacocloud.Control;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import sia.tacocloud.DAO.Boss;
@@ -16,17 +17,19 @@ public class BossController {
 
     private final BossService bossService;
 
+    private final SecurityConfig securityConfig;
     @Autowired
-    public BossController(BossService bossService, Boss boss){
+    public BossController(BossService bossService, Boss boss,SecurityConfig securityConfig){
         this.bossService = bossService;
         this.boss = boss;
-    }
+        this.securityConfig = securityConfig;
+       }
 
     @GetMapping("/save")
     public String Text(){
         boss.setId(null);
-        boss.setName("杨倩");
-        boss.setPassword("123456");
+        boss.setName("123");
+        boss.setPassword(securityConfig.encode().encode("123456"));
         bossService.save(boss);
         //自定义方法Spring Data JPA
         List<Boss> sc = bossService.findBossByNameUseJPQL("申聪");
