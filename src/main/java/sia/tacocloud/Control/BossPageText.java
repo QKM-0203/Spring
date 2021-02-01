@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
+import sia.tacocloud.Configuration.ConfigurationProps;
 import sia.tacocloud.DAO.Boss;
 import sia.tacocloud.DAO.BossPageAndSortJPARepository;
 
@@ -20,6 +21,9 @@ import java.util.function.Consumer;
 public class BossPageText {
 
     @Autowired
+    private ConfigurationProps configurationProps;
+
+    @Autowired
     private BossPageAndSortJPARepository bossPageAndSortJPARepository;
 
     /**
@@ -28,10 +32,10 @@ public class BossPageText {
     @Test
     public void test1(){
         int page = 2; //page:当前页的索引。注意索引都是从0开始的。
-        int size = 3;// size:每页显示3条数据
+       //PageSize显示每页多少条数据，这里使用自定义配置属性，属性源是应用配置文件
         //数据库页数从0开始
         //获取PageRequest的新方法，新版本
-        Pageable pageable= PageRequest.of(page-1,size);
+        Pageable pageable= PageRequest.of(page-1,configurationProps.getPageSize());
         Page<Boss> p = this.bossPageAndSortJPARepository.findAll(pageable);
         System.out.println("数据的总条数："+p.getTotalElements());
         System.out.println("总页数："+p.getTotalPages());
