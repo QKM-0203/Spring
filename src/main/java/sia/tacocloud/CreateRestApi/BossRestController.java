@@ -22,7 +22,7 @@ import java.util.Optional;
 //并使用消息转换器（spring自带的），有不少方式都能做到这一点，
 //最简单的方法是为每个控制器方法添加@ResponseBody（）注解或者整个控制器添加@RestController，或者返回ResponseEntity<Boss>将对象放在响应头中
 @RestController// 表示所有处理方法都会使用对应的消息转换器，转换成Accept中对应的类型（请求头中要求响应的的类型）
-@RequestMapping("/restapi")
+@RequestMapping("/model")
 public class BossRestController {
 
     private final BossCrudRepository bossCrudRepository;
@@ -33,14 +33,14 @@ public class BossRestController {
     }
 
     //get请求一般用来从服务器端获取信息
-    @GetMapping(produces = "application/json")//表示只会接受请求头Accept=application/json
+    @GetMapping(path="/Find",produces = "application/json")//表示只会接受请求头Accept=application/json
     public List<Boss> GetBoss(){
         Iterable<Boss> all = bossCrudRepository.findAll();
         return  (List<Boss>) all;
     }
 
     //创建
-    @PostMapping(consumes = "application/json")//表示只会接受请求头中ContentType=application/json，表示请求参数类型为JSON
+    @GetMapping(path="/add",consumes = "application/json")//表示只会接受请求头中ContentType=application/json，表示请求参数类型为JSON
     public ResponseEntity<Boss> Save(@RequestBody Boss boss){
         Boss save = bossCrudRepository.save(boss);
         //放在响应头中同时状态码为201表示创建一个资源

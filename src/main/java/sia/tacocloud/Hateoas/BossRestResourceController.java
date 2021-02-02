@@ -30,9 +30,12 @@ public class BossRestResourceController {
         this.bossPageAndSortJPARepository = bossPageAndSortJPARepository;
     }
 
-    @GetMapping(path = "/find",produces = "application/json")//表示只会接受请求头Accept=application/json
+    /**
+     * 获取boss同时每个boss带上超链接有参数id"http://localhost:8080/model/37"
+     * @return
+     */
+    @GetMapping(path = "/find")//表示只会接受请求头Accept=application/json
     public CollectionModel<BossResource> GetBoss(){
-        Iterable<Boss> all = bossPageAndSortJPARepository.findAll();
         //分页
         PageRequest page= PageRequest.of(0, 4, Sort.by("id").descending());
 
@@ -41,7 +44,7 @@ public class BossRestResourceController {
         //转为带有超链接的
         CollectionModel<BossResource> bossResources =
                 new BossResourceAssembler(BossRestResourceController.class, BossResource.class).toCollectionModel(tacos);
-        //获取一个Boss的整个路径 有基础路径就是控制器最上面的同时获取该处理方法的路径名字是"boss"
+        //获取一页boss也就是4个boss的整个路径 有基础路径就是控制器最上面的同时获取该处理方法的路径名字是"boss"
         /*
         "boss"{
            "href":"http://localhost:8080/model/find"
