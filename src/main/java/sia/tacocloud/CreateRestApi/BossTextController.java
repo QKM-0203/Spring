@@ -8,6 +8,7 @@ import sia.tacocloud.DAO.Boss;
 import sia.tacocloud.DAO.BossCrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 //该注解可以简化响应回去的呈现类型，当处理方法返回Java对象时，这个对象会放在模型中并在视图中渲染使用
 //但是，如果使用了消息转换功能的话，我们只需要告诉Spring跳过正常的模型/视图流程，
@@ -47,8 +48,21 @@ public class BossTextController {
     }
 
     @PutMapping//更新大批数据
-    public Boss update(@RequestBody  Boss boss){
+    public Boss updatePut(@RequestBody  Boss boss){
         return bossCrudRepository.save(boss);
+    }
+
+    @PatchMapping("{bossId}")//更新局部数据
+    public Boss updatePatch(@PathVariable("bossId") int id,@RequestBody  Boss boss){
+        //通过ID查找返回是Optional可以通过isPresent()判断有没有，然后利用get()来获取
+        Boss boss1 = bossCrudRepository.findById(id).get();
+        if(boss.getPassword() != null){
+            boss1.setPassword(boss.getPassword());
+        }
+        if(boss.getName() != null){
+            boss1.setName(boss.getName());
+        }
+        return bossCrudRepository.save(boss1);
     }
 
 }
