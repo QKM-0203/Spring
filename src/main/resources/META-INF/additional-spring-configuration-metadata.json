@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "taco.diy.PageSize",
+      "type": "java.lang.String",
+      "description": "Description for taco.diy.PageSize."
+    }
+  ]
+}
