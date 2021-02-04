@@ -49,7 +49,7 @@ public class BossRestController {
 
     //删除
     @ResponseStatus(HttpStatus.NO_CONTENT)//响应状态码为没有内容，让用户不要期得到什么内容
-    @DeleteMapping("{id}")//表示请求有个参数，底下的注解表示将该请求参数映射给注解里面的id然后赋值给id1
+    @DeleteMapping("/{id}")//表示请求有个参数占位符，底下的注解表示将该请求参数映射给注解里面的id然后赋值给id1
     public ResponseEntity<Boss> delete(@PathVariable("id") int id1){
         Optional<Boss> byId = bossCrudRepository.findById(id1);
         if(byId.isPresent()){

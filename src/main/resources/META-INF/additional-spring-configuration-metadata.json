@@ -4,6 +4,11 @@
       "name": "taco.diy.PageSize",
       "type": "java.lang.String",
       "description": "Description for taco.diy.PageSize."
+    },
+    {
+      "name": "taco.data.rest.base-path",
+      "type": "java.lang.String",
+      "description": "Description for taco.data.rest.base-path."
     }
   ]
 }

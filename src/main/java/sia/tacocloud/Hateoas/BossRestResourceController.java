@@ -3,9 +3,11 @@ package sia.tacocloud.Hateoas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import sia.tacocloud.DAO.Boss;
 import sia.tacocloud.DAO.BossPageAndSortJPARepository;
@@ -18,8 +20,8 @@ import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.met
 /**
  * 返回超链接的Rest Api
  */
-@RestController
 @RequestMapping("/model")
+@RestController
 public class BossRestResourceController {
 
 
@@ -34,7 +36,9 @@ public class BossRestResourceController {
      * 获取boss同时每个boss带上超链接有参数id"http://localhost:8080/model/37"
      * @return
      */
-    @GetMapping(path = "/find")//表示只会接受请求头Accept=application/json
+
+
+    @GetMapping(path="/get" )//表示只会接受请求头Accept=application/json
     public CollectionModel<BossResource> GetBoss(){
         //分页
         PageRequest page= PageRequest.of(0, 4, Sort.by("id").descending());

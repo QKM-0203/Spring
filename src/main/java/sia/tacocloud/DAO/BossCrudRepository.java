@@ -16,5 +16,5 @@ public interface BossCrudRepository extends CrudRepository<Boss,Integer> {
     List<Boss> findBossByLikeNameUseSQL(String name);
 
     @Query(value ="select * from boss where name = ?",nativeQuery=true)
-    public  Boss findBossByNameUse(String name);
+    Boss findBossByNameUse(String name);
 }
