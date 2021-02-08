@@ -5,14 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import reactor.core.publisher.Flux;
 import sia.tacocloud.DAO.Boss;
-import sia.tacocloud.DAO.BossCrudRepository;
 import sia.tacocloud.webflux.DAO.BossFluxRepository;
 
 @Controller
-public class FluxController {
+public class AnnotationsFluxController {
     private final BossFluxRepository bossFluxRepository;
     @Autowired
-    public FluxController(BossFluxRepository bossFluxRepository) {
+    public AnnotationsFluxController(BossFluxRepository bossFluxRepository) {
         this.bossFluxRepository = bossFluxRepository;
     }
 
