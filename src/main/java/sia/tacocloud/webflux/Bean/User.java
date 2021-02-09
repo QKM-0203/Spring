@@ -28,7 +28,7 @@ public class User {
     @PrimaryKeyColumn(type = PrimaryKeyType.CLUSTERED,ordering = Ordering.DESCENDING)
     private Date createAt;
 
-    private List<Information> information;
+    private List<InformationUID> information;
 
 
 }
