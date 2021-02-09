@@ -32,9 +32,9 @@ public class BossController {
         boss.setPassword(securityConfig.encode().encode("123456"));
         bossService.save(boss);
         //自定义方法Spring Data JPA
-        List<Boss> sc = bossService.findBossByNameUseJPQL("申聪");
+        List<Boss> sc = bossService.findBossByNameUseSQL("申聪");
         System.out.println(sc.toString());
-        List<Boss> s = bossService.findBossByLikeNameUseJPQL("%申%");
+        List<Boss> s = bossService.findBossByLikeNameUseSQL("%申%");
         System.out.println(s.toString());
         return "home";
    }

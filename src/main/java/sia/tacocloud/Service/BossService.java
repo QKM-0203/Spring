@@ -21,14 +21,14 @@ public class BossService {
         bossCrudRepository.save(boss);
     }
 
-    public List<Boss> findBossByNameUseJPQL(String name){
-        List<Boss> bossByNameUseJPQL = bossCrudRepository.findBossByNameUseSQL(name);
-        return bossByNameUseJPQL;
+    public List<Boss> findBossByNameUseSQL(String name){
+        List<Boss> bossByNameUseSQL = bossCrudRepository.findBossByNameUseSQL(name);
+        return bossByNameUseSQL;
     }
 
 
-    public List<Boss> findBossByLikeNameUseJPQL(String name){
-        List<Boss> bossByLikeNameUseJPQL = bossCrudRepository.findBossByLikeNameUseSQL(name);
-        return  bossByLikeNameUseJPQL;
+    public List<Boss> findBossByLikeNameUseSQL(String name){
+        List<Boss> bossByLikeNameUseSQL = bossCrudRepository.findBossByLikeNameUseSQL(name);
+        return  bossByLikeNameUseSQL;
     }
 }

@@ -17,7 +17,7 @@ public class FunctionFluxController {
 
     @Bean
     public RouterFunction<?> First() {
-        //第一个参数是RequestPredicate声明要处理的类型，第二个是Mono<ServerResponse>类型
+        //第一个参数是RequestPredicate声明要处理的类型，第二个是Mono<ServerResponse>类型,写进响应体
         return route(GET("/fun"),
                 new HandlerFunction<ServerResponse>() {
                     @Override
