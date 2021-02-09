@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BossPageText {
+public class UserPageText {
 
     @Autowired
     private ConfigurationProps configurationProps;
