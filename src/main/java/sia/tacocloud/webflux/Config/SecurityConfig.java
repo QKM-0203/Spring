@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import reactor.core.publisher.Mono;
+import sia.tacocloud.webflux.Bean.User;
 import sia.tacocloud.webflux.DAO.UserReactiveRepository;
 
 @Configuration
@@ -32,9 +33,11 @@ public class SecurityConfig {
         return new ReactiveUserDetailsService() {
             @Override
             public Mono<UserDetails> findByUsername(String s) {
-                return userReactiveRepository.findByName(s)
-                        .map(m-> {
-                            return m.userDetails();
+                Mono<User> byName = userReactiveRepository.findByName(s);
+                User block = byName.block();
+              return   byName
+                       .map(m-> {
+                            return m.userDetails(block);
                         });
             }
         };

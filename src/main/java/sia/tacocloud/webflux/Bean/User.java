@@ -7,8 +7,12 @@ import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -31,7 +35,10 @@ public class User {
 
     private List<InformationUID> information;
 
-    public UserDetails userDetails(){
-       return  null;
+    public UserDetails userDetails(User user){
+       return new org.springframework.security.core.userdetails.User(user.getName(),
+               user.getPassword(), true, true, true,true,Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+
     }
+
 }
