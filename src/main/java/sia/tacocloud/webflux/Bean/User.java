@@ -7,13 +7,14 @@ import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 @Data
-@Table("user")//将对象映射为Cassandra持久化
+@Table("User")//将对象映射为Cassandra持久化
 public class User {
     //其中的一个主键列，作为Cassandra数据库的分区键（用来找该行写在哪一个分区）
     @PrimaryKeyColumn(type = PrimaryKeyType.CLUSTERED)
@@ -30,5 +31,7 @@ public class User {
 
     private List<InformationUID> information;
 
-
+    public UserDetails userDetails(){
+       return  null;
+    }
 }
