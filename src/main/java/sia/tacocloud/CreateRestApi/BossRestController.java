@@ -33,7 +33,8 @@ public class BossRestController {
     }
 
     //get请求一般用来从服务器端获取信息
-    @GetMapping(path="/Find",produces = "application/json")//表示只会接受请求头Accept=application/json
+    @GetMapping(path="/Find")//表示只会接受请求头Accept=application/json
+    @ResponseBody
     public List<Boss> GetBoss(){
         Iterable<Boss> all = bossCrudRepository.findAll();
         return  (List<Boss>) all;

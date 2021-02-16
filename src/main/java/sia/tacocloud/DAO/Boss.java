@@ -1,6 +1,5 @@
 package sia.tacocloud.DAO;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,16 +12,17 @@ import java.util.Collection;
 
 @Entity
 @Data
-@Table(name="boss")
+@Table(name="Boss")
 @Component
 public class Boss implements UserDetails {
 
-    @NotNull()
+    @Column(name = "name")
     private String name;
+    @Column(name = "password")
     private String password;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Override
