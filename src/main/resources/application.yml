@@ -20,6 +20,4 @@ taco:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/,
-                   http://demo.com:8762/eureka/
-
+      defaultZone: http://localhost:8761/eureka

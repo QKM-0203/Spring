@@ -1,4 +1,4 @@
-package sia.tacocloud.Control;
+package sia.tacocloud.Controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,6 @@ import sia.tacocloud.DAO.Boss;
 import sia.tacocloud.DAO.BossPageAndSortJPARepository;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

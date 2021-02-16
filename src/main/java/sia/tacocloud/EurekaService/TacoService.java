@@ -7,11 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import sia.tacocloud.DAO.Boss;
 
 
-@Controller
+@RestController
 public class TacoService {
 
     private final RestTemplate restTemplate;
@@ -22,8 +23,9 @@ public class TacoService {
     }
 
     @GetMapping("/test")
-    public ResponseEntity<Boss> getBoss(){
+    public String getBoss(){
         Boss forObject = restTemplate.getForObject("http://taco-service/model/Find/1", Boss.class);
-        return new ResponseEntity<Boss>(forObject, HttpStatus.ACCEPTED);
+        System.out.println(forObject.getName());
+        return "yes";
     }
 }

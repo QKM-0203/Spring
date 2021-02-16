@@ -38,8 +38,8 @@ public class BossRestController {
         Iterable<Boss> all = bossCrudRepository.findAll();
         return  (List<Boss>) all;
 
-
     }
+
     @GetMapping(path="/Find/{id}")//表示只会接受请求头Accept=application/json
     public ResponseEntity<Boss> GetBoss(@PathVariable("id") int id){
         Optional<Boss> byId = bossCrudRepository.findById(id);

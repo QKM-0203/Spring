@@ -1,4 +1,4 @@
-package sia.tacocloud.Control;
+package sia.tacocloud.Controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

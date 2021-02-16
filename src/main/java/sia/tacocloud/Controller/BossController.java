@@ -1,17 +1,19 @@
-package sia.tacocloud.Control;
+package sia.tacocloud.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import sia.tacocloud.DAO.Boss;
 
+import sia.tacocloud.DAO.BossCrudRepository;
 import sia.tacocloud.Service.BossService;
 
 import java.util.List;
 
 @Controller
 public class BossController {
+    private final BossCrudRepository bossCrudRepository;
+
 
     private final Boss boss;
 
@@ -19,10 +21,11 @@ public class BossController {
 
     private final SecurityConfig securityConfig;
     @Autowired
-    public BossController(BossService bossService, Boss boss,SecurityConfig securityConfig){
+    public BossController(BossService bossService, BossCrudRepository bossCrudRepository,Boss boss,SecurityConfig securityConfig){
         this.bossService = bossService;
         this.boss = boss;
         this.securityConfig = securityConfig;
+        this.bossCrudRepository = bossCrudRepository;
        }
 
     @GetMapping("/save")
