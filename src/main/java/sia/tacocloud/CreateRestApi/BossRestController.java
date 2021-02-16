@@ -38,6 +38,19 @@ public class BossRestController {
     public List<Boss> GetBoss(){
         Iterable<Boss> all = bossCrudRepository.findAll();
         return  (List<Boss>) all;
+
+
+    }
+    @GetMapping(path="/Find/{id}")//表示只会接受请求头Accept=application/json
+    public ResponseEntity<Boss> GetBoss(@PathVariable("id") int id){
+        Optional<Boss> byId = bossCrudRepository.findById(id);
+        if(byId.isPresent()){
+            return new ResponseEntity<Boss>(byId.get(),HttpStatus.ACCEPTED);
+        }else{
+            return new ResponseEntity<Boss>((MultiValueMap<String, String>)null,HttpStatus.NOT_FOUND);
+
+        }
+
     }
 
     //创建
