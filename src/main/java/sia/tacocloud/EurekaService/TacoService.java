@@ -17,7 +17,7 @@ public class TacoService {
     private final RestTemplate restTemplate;
 
     @Autowired
-    public TacoService(RestTemplate restTemplate) {
+    public TacoService(@LoadBalanced RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
@@ -25,6 +25,5 @@ public class TacoService {
     public ResponseEntity<Boss> getBoss(){
         Boss forObject = restTemplate.getForObject("http://taco-service/model/Find/1", Boss.class);
         return new ResponseEntity<Boss>(forObject, HttpStatus.ACCEPTED);
-
     }
 }
