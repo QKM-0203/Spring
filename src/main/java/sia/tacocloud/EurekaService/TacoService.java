@@ -22,6 +22,11 @@ public class TacoService {
         this.restTemplate = restTemplate;
     }
 
+    /**
+     *
+     * 有问题
+     * @return
+     */
     @GetMapping("/test")
     public String getBoss(){
         Boss forObject = restTemplate.getForObject("http://taco-service/model/Find/1", Boss.class);

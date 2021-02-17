@@ -19,6 +19,11 @@ public class FeignText {
         this.tacoFeign = tacoFeign;
     }
 
+    /**
+     * 有问题
+     * @param model
+     * @return
+     */
     @GetMapping("/feign")
     public String getBosses(Model model){
         tacoFeign.getBosses();
