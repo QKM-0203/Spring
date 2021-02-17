@@ -11,7 +11,7 @@ import sia.tacocloud.DAO.BossCrudRepository;
 @Service
 public class BossDIYSecurityService implements UserDetailsService {
 
-    private final BossCrudRepository bossCrudRepository;
+    public final BossCrudRepository bossCrudRepository;
 
     @Autowired
     public BossDIYSecurityService(BossCrudRepository bossCrudRepository){

@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import sia.tacocloud.DAO.Boss;
+import sia.tacocloud.DAO.Boss1;
+import sia.tacocloud.DAO.Boss1CrudRepository;
 import sia.tacocloud.DAO.BossCrudRepository;
 
 import java.util.List;
@@ -24,29 +26,34 @@ import java.util.Optional;
 @RequestMapping("/model")
 public class BossRestController {
 
-    private final BossCrudRepository bossCrudRepository;
+    public final BossCrudRepository bossCrudRepository;
+    public final Boss1CrudRepository boss1CrudRepository;
 
     @Autowired
-    public BossRestController(BossCrudRepository bossCrudRepository) {
+    public BossRestController(BossCrudRepository bossCrudRepository,Boss1CrudRepository boss1CrudRepository) {
         this.bossCrudRepository = bossCrudRepository;
+        this.boss1CrudRepository = boss1CrudRepository;
     }
 
+    /**
+     *Boss1用到SpringCloud 消费eureka
+     * @return
+     */
     //get请求一般用来从服务器端获取信息
     @GetMapping(path="/Find")//表示只会接受请求头Accept=application/json
     @ResponseBody
-    public List<Boss> GetBoss(){
-        Iterable<Boss> all = bossCrudRepository.findAll();
-        return  (List<Boss>) all;
-
+    public List<Boss1> GetBoss(){
+        Iterable<Boss1> all = boss1CrudRepository.findAll();
+        return  (List<Boss1>) all;
     }
 
-    @GetMapping(path="/Find/{id}")//表示只会接受请求头Accept=application/json
-    public ResponseEntity<Boss> GetBoss(@PathVariable("id") int id){
-        Optional<Boss> byId = bossCrudRepository.findById(id);
+    @GetMapping(path="/Find/{id}")
+    public ResponseEntity<Boss1> GetBoss(@PathVariable("id") int id){
+        Optional<Boss1> byId = boss1CrudRepository.findById(id);
         if(byId.isPresent()){
-            return new ResponseEntity<Boss>(byId.get(),HttpStatus.ACCEPTED);
+            return new ResponseEntity<Boss1>(byId.get(),HttpStatus.ACCEPTED);
         }else{
-            return new ResponseEntity<Boss>((MultiValueMap<String, String>)null,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Boss1>((MultiValueMap<String, String>)null,HttpStatus.NOT_FOUND);
 
         }
 

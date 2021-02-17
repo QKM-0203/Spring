@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class BossService {
 
-    private final BossCrudRepository bossCrudRepository;
+    public final BossCrudRepository bossCrudRepository;
 
     @Autowired
     public BossService(BossCrudRepository bossCrudRepository){

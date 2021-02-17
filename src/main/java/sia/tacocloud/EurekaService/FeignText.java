@@ -6,11 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sia.tacocloud.DAO.Boss;
+import sia.tacocloud.DAO.Boss1;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class FeignText {
     private TacoFeign tacoFeign;
 
@@ -20,13 +20,13 @@ public class FeignText {
     }
 
     /**
-     * 有问题
-     * @param model
+     * 解决成功，不能使用Boss，要用Boss1，Boss里面有很多权限问题，暂时不知道什么问题
+     * @param
      * @return
      */
     @GetMapping("/feign")
-    public String getBosses(Model model){
-        tacoFeign.getBosses();
-        return "login";
+    public List<Boss1> getBosses(){
+        List<Boss1> bosses = tacoFeign.getBosses();
+        return bosses;
     }
 }

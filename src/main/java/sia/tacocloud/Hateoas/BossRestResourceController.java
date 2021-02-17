@@ -25,7 +25,7 @@ import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.met
 public class BossRestResourceController {
 
 
-    private final BossPageAndSortJPARepository bossPageAndSortJPARepository;
+    public final BossPageAndSortJPARepository bossPageAndSortJPARepository;
 
     @Autowired
     public BossRestResourceController(BossPageAndSortJPARepository bossPageAndSortJPARepository) {
