@@ -9,6 +9,11 @@
       "name": "taco.data.rest.base-path",
       "type": "java.lang.String",
       "description": "Description for taco.data.rest.base-path."
+    },
+    {
+      "name": "spring.cloud.config.uri",
+      "type": "java.lang.String",
+      "description": "Description for spring.cloud.config.uri."
     }
   ]
 }
