@@ -15,9 +15,9 @@ public class DynamicText {
                     @Override
                     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                         System.out.println("增加动态代理前操作");
-                        method.invoke(jdkDynamic, args);
+                        Object invoke = method.invoke(jdkDynamic, args);
                         System.out.println("增加动态代理后操作");
-                        return null;
+                        return invoke;
                     }
                 }
         );
