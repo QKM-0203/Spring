@@ -3,9 +3,15 @@ spring:
      rest:
        base-path: /API
   application:
-     name: taco-service
+    name: taco-service
 taco:
   diy:
     PageSize: 5
 server:
   port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

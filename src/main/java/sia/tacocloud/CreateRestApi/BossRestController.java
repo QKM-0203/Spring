@@ -1,6 +1,7 @@
 package sia.tacocloud.CreateRestApi;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -24,6 +25,7 @@ import java.util.Optional;
 //最简单的方法是为每个控制器方法添加@ResponseBody（）注解或者整个控制器添加@RestController，或者返回ResponseEntity<Boss>将对象放在响应头中
 @RestController// 表示所有处理方法都会使用对应的消息转换器，转换成Accept中对应的类型（请求头中要求响应的的类型）
 @RequestMapping("/model")
+@RefreshScope
 public class BossRestController {
 
     public final BossCrudRepository bossCrudRepository;
