@@ -10,15 +10,19 @@ import javax.persistence.Table;
 
 @Entity
 @Data
-@Table(name="Boss")
+@Table(name="boss")
 @Component
 public class Boss1 {
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "password")
     private String password;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
     private Integer id;
+
+
 }

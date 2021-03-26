@@ -3,6 +3,10 @@ package sia.tacocloud.Agent.Dynamic.CGLIB;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionException;
+import org.springframework.transaction.TransactionStatus;
 
 import java.lang.reflect.Method;
 
@@ -26,6 +30,7 @@ public class CGLibAddDynamic implements MethodInterceptor {
 
         //生成并返回代理对象
         return enhancer.create();
+
     }
 
 

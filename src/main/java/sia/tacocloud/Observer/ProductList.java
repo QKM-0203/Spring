@@ -39,10 +39,16 @@ public class ProductList extends Observable {
       public void addProduct(String newProduct){
            productLists.add(newProduct);
           System.out.println("产品列表新增产品");
+
           //设置被观察者出现了变化
-          this.setChanged();
+          super.setChanged();
+
           //通知观察者，并传递新产品
-           this.notifyObservers(newProduct);
+           super.notifyObservers(newProduct);
       }
+
+
+
+
 
 }

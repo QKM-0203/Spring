@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Bean//加密模式，记住这个验证时是加密验证的，那么存的时候也要加密后再存
+    @Bean//加密模式，记住这个验证时是加密验证的，那么存的时候也要加密后再存，
     public PasswordEncoder encode(){
         return new BCryptPasswordEncoder();
     }

@@ -1,4 +1,33 @@
+#配置文件的优先级
+#1 当前文件的根路径下的config（自己建立文件夹下）的配置文件最高
+#2 当前路径下的配置文件
+#3 classpath:/config的配置文件（就是resource下的config下的配置文件）
+#4 classpath:/(resource下的配置文件)
+#从高到低依次加载，相同的覆盖，没有则互补
+
+
+#命令行参数可以直接修改jar包中配置文件设置的值，用--server.port
+server:
+  port: 8080
+#  项目默认文件路径,就是在访问http路径要加的东西
+#  server.context-path: /boot
+
+#    在打成jar之后在命令行加载配置文件，外部的配置文件和项目内部的会形成互补的关系，重复的以外部的为主
+#    spring.config.location: /home/qikaimeng/下载/application.yml
+# java -jar 项目jar包名字--spring.config.location=文件的位置
+
 spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/Text
+    username: root
+    password: 13468724917qkm,
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  profiles:
+    active: prod
+    # 虚拟机参数，也可以让profiles直接生效，可以在IDEA里面设置，作用就是和spring.profiles.active相同
+    #-Dspring.profiles.active=dev
+    #命令行参数，同上
+    #--spring.profiles.active=dev，可以在IDEA里面设置，也可以在命令行之后直接加
   data:
      rest:
        base-path: /API
@@ -7,11 +36,51 @@ spring:
 taco:
   diy:
     PageSize: 5
-server:
-  port: 8080
+    map: {"1": "2","3":"4"}
+
+#占位符，可以取得你上面设置的，可以利用冒号判断是否存在，不存在则取后面的默认的值
+test:
+  one1: ${taco.diy.map.3:1}_map
+
+
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+#        双引号会是字符复原本的含义比如\n就会换行,但是单引号就会输出\n
 
+#
+#        对象和map的写法
+#        object:
+#            name: 10
+#            age: 3
+#        object: {name: 10,age: 3}
+
+#数组的写法
+#array:
+#  - pet 底下的都是元素
+#  - cat
+#  - pig
+#  或者 array:[pet,cat,pig]
+
+
+        include: "*"
+---
+spring:
+  profiles: dev
+server:
+  port: 8089
+---
+spring:
+  profiles: prod
+server:
+  port: 8090
+#logging:
+#  level:
+##    使得该包下的所有日志级别为debug以上   trace<debug<info<warn<error
+#    sia.tacocloud: debug
+#  file:
+##    在该路径下建立一个spring-log的文件夹，里面存放spring.log的日志文件
+#    path: /home/qikaimeng/spring.log
+##   在当前项目下建立一个文件日志spring.log
+##    name: spring.log

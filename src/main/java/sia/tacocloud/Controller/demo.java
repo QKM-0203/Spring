@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RefreshScope
 public class demo {
-    @Value("${name}")
+    @Value("wer")
     private String name;
 
 
