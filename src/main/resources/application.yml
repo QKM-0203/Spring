@@ -73,8 +73,11 @@ server:
 ---
 spring:
   profiles: prod
+  message:
+     basename: i18n.login
 server:
   port: 8090
+
 #logging:
 #  level:
 ##    使得该包下的所有日志级别为debug以上   trace<debug<info<warn<error

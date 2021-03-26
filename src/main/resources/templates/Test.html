@@ -14,7 +14,7 @@
 <!--$和jsp差不多，*{}选择表达式,${user}比如前面这个是表示user对象， 那么*{name}就表示直接取出对象的一个name属性-->
 <!--<div th:text="${x.jd}"></div>-->
 <!--#{}获取国际化内容的-->
-<!--@{}用来表示url的-->
+<!--th:href="@{}"    @{}用来表示url的-->
 <!--用循环获取值，user就是循环里面的每一个值-->
 <div >
     <span th:each="user:${User}" th:text="user"></span>
