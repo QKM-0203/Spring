@@ -1,6 +1,7 @@
 package sia.tacocloud.Configuration;
 
 import lombok.Data;
+import org.apache.commons.beanutils.locale.LocaleBeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -13,9 +14,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.LocaleResolver;
+import sia.tacocloud.Controller.MyLocaleResolve;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -60,5 +66,9 @@ public class ConfigurationProps {
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
+
+
+
+
 
 }

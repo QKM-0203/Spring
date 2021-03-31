@@ -16,11 +16,12 @@
 <!--#{}获取国际化内容的-->
 <!--th:href="@{}"    @{}用来表示url的-->
 <!--用循环获取值，user就是循环里面的每一个值-->
-<div >
-    <span th:each="user:${User}" th:text="user"></span>
-</div>
+<!--<div >-->
+<!--    <span th:each="user:${User}" th:text="user"></span>-->
+<!--</div>-->
 
 
-<img  th:src="@{/x.jpg}" width="1000px" height="1000px"/>
+<img  th:src="@{/image/x.jpg}" width="1000px" height="1000px"/>
+<p th:text="${msg}">${msg}</p>
 </body>
 </html>

@@ -68,13 +68,18 @@ management:
 ---
 spring:
   profiles: dev
+  messages:
+     basename: i18n.login
+  thymeleaf:
+    cache: false
 server:
   port: 8089
+  servlet:
+    context-path: /spring
 ---
 spring:
   profiles: prod
-  message:
-     basename: i18n.login
+
 server:
   port: 8090
 

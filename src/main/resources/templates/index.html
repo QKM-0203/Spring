@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
@@ -13,7 +13,7 @@
     
 
     <!-- Bootstrap core CSS -->
-<link  href="assert/css/signin.css" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.css}" rel="stylesheet">
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.css}" rel="stylesheet" type="text/css">
 
     <style>
       .bd-placeholder-img {
@@ -33,31 +33,37 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="../public/signin.css" th:href="@{../public/signin.css}" rel="stylesheet">
+    <link th:href="@{/css/signin.css}" rel="stylesheet"    >
+
   </head>
   <body class="text-center">
     
 <main class="form-signin">
-  <form>
-    <img class="mb-4" th:src="@{../public/bootstrap-logo.svg}" src="../public/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+<!--  如果用@{}那么目录前要加/,如果直接src就可以直接写路径，静态资源都在static文件夹下-->
+  <form action="index1.html" th:action="@{/first}" method="post">
+    <img class="mb-4" th:src="@{/image/bootstrap-logo.svg}"  alt="" width="72" height="57"/>
+    <h1 class="h3 mb-3 fw-normal" th:text="#{login.tip}">Please sign in</h1>
+<!--    <先判断if,如果条件满足,才会执行text里面的内容>-->
+    <p th:text="${msg}"  style="color:red" th:if="${not #strings.isEmpty(msg)}"></p>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+
+      <input type="email" class="form-control" name="username" id="floatingInput" th:placeholder="#{login.username}">
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
+      <input type="password" class="form-control" name="password" id="floatingPassword" th:placeholder="#{login.password}">
     </div>
 
     <div class="checkbox mb-3">
       <label>
-        <input type="checkbox" value="remember-me"> Remember me
+        <input type="checkbox" value="remember-me"/>[[#{login.remember}]]
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" th:text="#{login.btn}"
+            >Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    <a class="btn btn-sm" th:href="@{/index.html(I='zh_CN')}">中文</a>
+    <a class="btn btn-sm" th:href="@{/index.html(I='en_US')}">英文</a>
   </form>
 </main>
 
