@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-import sia.tacocloud.DAO.Boss;
-import sia.tacocloud.DAO.Boss1;
+import sia.tacocloud.DAO.Bean.Boss;
+import sia.tacocloud.DAO.Bean.Boss1;
 import sia.tacocloud.DAO.Boss1CrudRepository;
 import sia.tacocloud.DAO.BossCrudRepository;
 
@@ -32,69 +32,70 @@ public class BossRestController {
     public final Boss1CrudRepository boss1CrudRepository;
 
     @Autowired
-    public BossRestController(BossCrudRepository bossCrudRepository,Boss1CrudRepository boss1CrudRepository) {
+    public BossRestController(BossCrudRepository bossCrudRepository, Boss1CrudRepository boss1CrudRepository) {
         this.bossCrudRepository = bossCrudRepository;
         this.boss1CrudRepository = boss1CrudRepository;
     }
 
     /**
-     *Boss1用到SpringCloud 消费eureka
+     * Boss1用到SpringCloud 消费eureka
+     *
      * @return
      */
     //get请求一般用来从服务器端获取信息
-    @GetMapping(path="/Find")//表示只会接受请求头Accept=application/json
+    @GetMapping(path = "/Find")//表示只会接受请求头Accept=application/json
     @ResponseBody
-    public List<Boss1> GetBoss(){
+    public List<Boss1> GetBoss() {
         Iterable<Boss1> all = boss1CrudRepository.findAll();
-        return  (List<Boss1>) all;
+        return (List<Boss1>) all;
     }
 
-    @GetMapping(path="/Find/{id}")
-    public ResponseEntity<Boss1> GetBoss(@PathVariable("id") int id){
+    @GetMapping(path = "/Find/{id}")
+    public ResponseEntity<Boss1> GetBoss(@PathVariable("id") int id) {
         Optional<Boss1> byId = boss1CrudRepository.findById(id);
-        if(byId.isPresent()){
-            return new ResponseEntity<Boss1>(byId.get(),HttpStatus.ACCEPTED);
-        }else{
-            return new ResponseEntity<Boss1>((MultiValueMap<String, String>)null,HttpStatus.NOT_FOUND);
+        if (byId.isPresent()) {
+            return new ResponseEntity<Boss1>(byId.get(), HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<Boss1>((MultiValueMap<String, String>) null, HttpStatus.NOT_FOUND);
 
         }
 
     }
 
     //创建
-    @GetMapping(path="/add",consumes = "application/json")//表示只会接受请求头中ContentType=application/json，表示请求参数类型为JSON
-    public ResponseEntity<Boss> Save(@RequestBody Boss boss){
+    @GetMapping(path = "/add", consumes = "application/json")//表示只会接受请求头中ContentType=application/json，表示请求参数类型为JSON
+    public ResponseEntity<Boss> Save(@RequestBody Boss boss) {
         Boss save = bossCrudRepository.save(boss);
         //放在响应头中同时状态码为201表示创建一个资源
-        return  new ResponseEntity<Boss>(save, HttpStatus.CREATED);
+        return new ResponseEntity<Boss>(save, HttpStatus.CREATED);
     }
 
     //删除
     @ResponseStatus(HttpStatus.NO_CONTENT)//响应状态码为没有内容，让用户不要期得到什么内容
     @DeleteMapping("/{id}")//表示请求有个参数占位符，底下的注解表示将该请求参数映射给注解里面的id然后赋值给id1
-    public ResponseEntity<Boss> delete(@PathVariable("id") int id1){
+    public ResponseEntity<Boss> delete(@PathVariable("id") int id1) {
         Optional<Boss> byId = bossCrudRepository.findById(id1);
-        if(byId.isPresent()){
+        if (byId.isPresent()) {
             bossCrudRepository.deleteById(id1);
-            return  new ResponseEntity<Boss>(byId.get(),HttpStatus.NO_CONTENT);
-        } else{
-            return  new ResponseEntity<Boss>((MultiValueMap<String, String>) null,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Boss>(byId.get(), HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<Boss>((MultiValueMap<String, String>) null, HttpStatus.NOT_FOUND);
         }
     }
 
     @PutMapping//更新大批数据
-    public Boss updatePut(@RequestBody  Boss boss){
+    public Boss updatePut(@RequestBody Boss boss) {
         return bossCrudRepository.save(boss);
     }
 
     @PatchMapping("{bossId}")//更新局部数据
-    public Boss updatePatch(@PathVariable("bossId") int id,@RequestBody  Boss boss){
+    public Boss updatePatch(@PathVariable("bossId") int id, @RequestBody Boss boss) {
         //通过ID查找返回是Optional可以通过isPresent()判断有没有，然后利用get()来获取
         Boss boss1 = bossCrudRepository.findById(id).get();
-        if(boss.getPassword() != null){
+        if (boss.getPassword() != null) {
             boss1.setPassword(boss.getPassword());
         }
-        if(boss.getName() != null){
+        if (boss.getName() != null) {
             boss1.setName(boss.getName());
         }
         return bossCrudRepository.save(boss1);

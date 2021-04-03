@@ -1,4 +1,4 @@
-package sia.tacocloud.DAO;
+package sia.tacocloud.DAO.Bean;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

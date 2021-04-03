@@ -2,7 +2,7 @@ package sia.tacocloud.Hateoas;
 
 import lombok.Getter;
 import org.springframework.hateoas.RepresentationModel;
-import sia.tacocloud.DAO.Boss;
+import sia.tacocloud.DAO.Bean.Boss;
 
 public class BossResource extends RepresentationModel<BossResource> {
     @Getter

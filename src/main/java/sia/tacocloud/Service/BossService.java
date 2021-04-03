@@ -2,7 +2,7 @@ package sia.tacocloud.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sia.tacocloud.DAO.Boss;
+import sia.tacocloud.DAO.Bean.Boss;
 import sia.tacocloud.DAO.BossCrudRepository;
 
 import java.util.List;

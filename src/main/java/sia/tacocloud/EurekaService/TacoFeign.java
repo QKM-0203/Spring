@@ -3,7 +3,7 @@ package sia.tacocloud.EurekaService;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
-import sia.tacocloud.DAO.Boss1;
+import sia.tacocloud.DAO.Bean.Boss1;
 
 import java.util.List;
 

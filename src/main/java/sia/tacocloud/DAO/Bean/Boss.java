@@ -1,4 +1,4 @@
-package sia.tacocloud.DAO;
+package sia.tacocloud.DAO.Bean;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,6 +24,7 @@ public class Boss implements UserDetails {
 
     @Id
     @Column(name = "ID")
+    //spring boot自动开启驼峰没
     private Integer id;
 
     @Override

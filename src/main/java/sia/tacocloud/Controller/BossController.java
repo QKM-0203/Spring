@@ -1,10 +1,11 @@
 package sia.tacocloud.Controller;
 
-import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import sia.tacocloud.DAO.Boss;
+import sia.tacocloud.Configuration.SecurityConfig;
+import sia.tacocloud.DAO.Bean.Boss;
 
 import sia.tacocloud.DAO.BossCrudRepository;
 import sia.tacocloud.Service.BossService;
@@ -27,7 +28,7 @@ public class BossController {
         this.boss = boss;
         this.securityConfig = securityConfig;
         this.bossCrudRepository = bossCrudRepository;
-       }
+    }
 
     @GetMapping("/save")
     public String Text(){
@@ -41,5 +42,11 @@ public class BossController {
         List<Boss> s = bossService.findBossByLikeNameUseSQL("%申%");
         System.out.println(s.toString());
         return "home";
+   }
+   @GetMapping("/select")
+   public String selectBoss(Model model){
+       Iterable<Boss> all = bossCrudRepository.findAll();
+       model.addAttribute("bosses",all);
+       return "dashBoard";
    }
 }

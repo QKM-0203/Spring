@@ -6,8 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import sia.tacocloud.DAO.Boss;
-import sia.tacocloud.DAO.Boss1;
+import sia.tacocloud.DAO.Bean.Boss1;
 
 
 @RestController

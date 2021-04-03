@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
 
 /**
- * 默认的区域解析器是根据请求头来解析是要中文还是英文,所有你如果使用自己设置的区域解析器，就写一个变成bean加到spring 容器里面
+ * 默认的区域解析器是根据请求头来解析是要中文还是英文,所有你如果使用自己设置的区域解析器，就写一个方法将该类变成bean加到spring 容器,
+ * 在一个配置类里面就可以里面
  */
 
-@Service
+
 public class MyLocaleResolve implements LocaleResolver {
 
     @Override

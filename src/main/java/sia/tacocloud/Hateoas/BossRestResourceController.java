@@ -3,13 +3,11 @@ package sia.tacocloud.Hateoas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import sia.tacocloud.DAO.Boss;
+import sia.tacocloud.DAO.Bean.Boss;
 import sia.tacocloud.DAO.BossPageAndSortJPARepository;
 
 import java.util.List;

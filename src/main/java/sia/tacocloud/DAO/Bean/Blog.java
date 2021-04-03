@@ -1,4 +1,4 @@
-package sia.tacocloud.DAO;
+package sia.tacocloud.DAO.Bean;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
@@ -10,19 +10,15 @@ import javax.persistence.Table;
 
 @Entity
 @Data
-@Table(name="boss")
+@Table(name="blog")
 @Component
-public class Boss1 {
+public class Blog {
 
-    @Column(name = "name")
-    private String name;
+    private String bossId;
+    private String think;
 
-    @Column(name = "password")
-    private String password;
 
     @Id
-    @Column(name = "ID")
-    private Integer id;
-
-
+    //@Column(name="creatAtAndName")
+    private String creatAtAndName;
 }

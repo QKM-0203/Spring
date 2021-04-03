@@ -1,6 +1,6 @@
 package sia.tacocloud.Hateoas;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
-import sia.tacocloud.DAO.Boss;
+import sia.tacocloud.DAO.Bean.Boss;
 
 /**
  * 资源装配器，将Boss-BossResource

@@ -1,4 +1,4 @@
-package sia.tacocloud.DAO;
+package sia.tacocloud.DAO.Bean;
 
 import com.sun.istack.NotNull;
 import lombok.Data;

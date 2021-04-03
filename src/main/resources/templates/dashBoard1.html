@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,7 @@
     <meta name="generator" content="Hugo 0.82.0">
     <title>Dashboard Template · Bootstrap v5.0</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/" >
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
     <link rel="icon" type="image/x-icon" href="image/favicon.ico">
 
@@ -31,47 +31,57 @@
       }
     </style>
 
+    
     <!-- Custom styles for this template -->
     <link href="dashboard.css" th:href="@{/css/dashboard.css}" rel="stylesheet">
   </head>
   <body>
-    
-<div th:replace="commons/bar :: #top"></div>
-<!-- html页面只能发送get或者put请求,所以当你想发送别的请求方式的时候,就用如下来解决-->
-<!--<input type="hidden" name="_method" value="put"/>-->
+
+  <div th:replace="commons/bar :: #top"></div>
+
 <div class="container-fluid">
   <div class="row">
 
-   <div th:replace="commons/bar :: #side"></div>
+<!--    //当有多处代码重复时就可以用一下这三种情况-->
+<!--    这个是用里面的内容代替外面的div，依照你的代码重复的要求来选择，每一种都有两种表示方法,设置id,设置th:fragment="",最后的表示形式
+都是 模板名 :: id/fragment -->
+<!--    id-->
+<!--    fragment-->
+<!--    <div th:replace="dashBoard :: copy"></div>-->
+
+<!--   使用insert是有外面的div在的-->
+<!--    <div th:insert="dashBoard :: #sidebarMenu"></div>-->
+
+<!--    这个是将内容添加进去 就本次重复代码而言是没有nav这个标签的 -->
+<!--    <div th:include="dashBoard :: #sidebarMenu"></div>-->
 
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
+    <div th:replace="commons/bar :: #side"></div>
+
+    <main class="col-md-9 msni-sm-auto col-lg-10 px-md-4">
 
       <h2>Section title</h2>
-        <h2><button class="btn btn-sm btn-success">员工添加</button>
-        </h2>
+      <h2><button class="btn btn-sm btn-success">博客添加</button>
+      </h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>ID</th>
-              <th>Password</th>
+              <th>bossId</th>
+              <th>think</th>
+              <th>creatTimeAndName</th>
             </tr>
           </thead>
           <tbody>
-            <tr th:each="boss:${bosses}">
-<!--                 <td th:text="${boss.name}"></td>-->
-                 <td>[[${boss.name}]]</td>
-                 <td th:text="${boss.id}"></td>
-                 <td th:text="${boss.password}"></td>
-                <td>
-
-<!--                    字符串拼接-->
-                    <a class="btn btn-sm btn-primary" th:href="@{'/updateBlog/'+${boss.id}}">编辑</a>
-                    <button class="btn btn-sm btn-danger">删除</button>
-                </td>
+            <tr th:each="blog:${blogs}">
+              <td th:text="${blog.bossId}"></td>
+              <td >[[${blog.think}]]</td>
+              <td th:text="${blog.creatAtAndName}"></td>
+              <td>
+                <button class="btn btn-sm btn-primary">编辑</button>
+                <button class="btn btn-sm btn-danger">删除</button>
+              </td>
             </tr>
           </tbody>
         </table>

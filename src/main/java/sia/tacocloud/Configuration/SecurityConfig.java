@@ -1,4 +1,4 @@
-package sia.tacocloud.Controller;
+package sia.tacocloud.Configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

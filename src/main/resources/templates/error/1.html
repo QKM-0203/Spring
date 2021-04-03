@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>500</title>
+</head>
+<body>
+<!--如何定制错误页面-->
+<!--错误页面有模板引擎的作用下-->
+<!--也可使用4XX,匹配所有4开头的页面,精确的名字优先 ,,就可以
+timestamp :时间戳
+status: 状态码
+error: 错误提示
+exception :异常对象
+message :异常消息
+error: JSR303数据校验的错误数据都在这里
+可以通过$符号取出 比如${timestamp}-->
+
+<!--没有模板引擎,就将error文件夹放在static下,但是这样就不经过视图解析其了,thymeleaf的符号就不起作用了,-->
+<!--如果以上两种都没有,则就是用spring boot 默认的错误页面-->
+<h1>[[${Exception.message}]]</h1><!--密码错误-->
+<!--<h1>[[${demo}]]</h1>&lt;!&ndash;测试&ndash;&gt;-->
+</body>
+</html>

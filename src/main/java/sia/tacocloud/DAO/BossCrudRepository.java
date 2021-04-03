@@ -2,6 +2,7 @@ package sia.tacocloud.DAO;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import sia.tacocloud.DAO.Bean.Boss;
 
 import java.util.List;
 

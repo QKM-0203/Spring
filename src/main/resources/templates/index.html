@@ -10,6 +10,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
+    <link rel="icon" type="image/x-icon" href="image/favicon.ico">
     
 
     <!-- Bootstrap core CSS -->
@@ -33,41 +34,41 @@
 
     
     <!-- Custom styles for this template -->
-    <link th:href="@{/css/signin.css}" rel="stylesheet"    >
+    <link th:href="@{/css/signin.css}" rel="stylesheet">
 
   </head>
   <body class="text-center">
     
 <main class="form-signin">
 <!--  如果用@{}那么目录前要加/,如果直接src就可以直接写路径，静态资源都在static文件夹下-->
-  <form action="index1.html" th:action="@{/first}" method="post">
+  <form action="snake.html" th:action="@{/first}" method="post">
     <img class="mb-4" th:src="@{/image/bootstrap-logo.svg}"  alt="" width="72" height="57"/>
     <h1 class="h3 mb-3 fw-normal" th:text="#{login.tip}">Please sign in</h1>
 <!--    <先判断if,如果条件满足,才会执行text里面的内容>-->
     <p th:text="${msg}"  style="color:red" th:if="${not #strings.isEmpty(msg)}"></p>
 
     <div class="form-floating">
-
       <input type="email" class="form-control" name="username" id="floatingInput" th:placeholder="#{login.username}">
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" name="password" id="floatingPassword" th:placeholder="#{login.password}">
     </div>
 
+
     <div class="checkbox mb-3">
+
       <label>
         <input type="checkbox" value="remember-me"/>[[#{login.remember}]]
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit" th:text="#{login.btn}"
-            >Sign in</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" th:text="#{login.btn}">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-    <a class="btn btn-sm" th:href="@{/index.html(I='zh_CN')}">中文</a>
-    <a class="btn btn-sm" th:href="@{/index.html(I='en_US')}">英文</a>
+<!--    不能直接访问templates下面的html文件。因为模板引擎都是要经过视图解析器的，所以直接访问不了，就通过控制器来访问,static下的静态文件也直接访问不了-->
+<!--    访问模板殷勤的路径是控制器-服务-视图解析器(模板引撳默认是经过试图解析器的)-->
+    <a class="btn btn-sm" th:href="@{/login(I='zh_CN')}">中文</a>
+    <a class="btn btn-sm" th:href="@{/login(I='en_US')}">英文</a>
   </form>
 </main>
 
-
-    
   </body>
 </html>

@@ -15,7 +15,7 @@ import org.springframework.data.domain.Sort;
 
 import org.springframework.test.context.junit4.SpringRunner;
 import sia.tacocloud.Configuration.ConfigurationProps;
-import sia.tacocloud.DAO.Boss;
+import sia.tacocloud.DAO.Bean.Boss;
 import sia.tacocloud.DAO.BossPageAndSortJPARepository;
 
 
